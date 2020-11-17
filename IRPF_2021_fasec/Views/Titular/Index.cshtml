@@ -1,0 +1,47 @@
+﻿@model IRPF_2021_fasec.Models.Titular
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutTitular.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h3>AREA DO BENEFICIARIO FASEC/CEPLAC</h3>
+        <hr />
+
+        <section id="loginFormTitular">
+
+            @using (Html.BeginForm("Index", "Titular", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+
+                @Html.ValidationSummary(true, "", new {@class = "text-danger" })
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Cpf_Titular, new {@class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Cpf_Titular, new {@class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Cpf_Titular, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Acessar" class="btn btn-default" />
+                    </div>
+                </div>
+
+              }
+
+        </section>
+               
+    </div >
+</div>
+
